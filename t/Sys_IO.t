@@ -29,7 +29,6 @@ ok(SPVM::TestCase::Sys::IO->close($test_dir));
   ok(SPVM::TestCase::Sys::IO->write("$tmp_dir"));
 }
 ok(SPVM::TestCase::Sys::IO->fopen($test_dir));
-ok(SPVM::TestCase::Sys::IO->fdopen($test_dir));
 ok(SPVM::TestCase::Sys::IO->fread($test_dir));
 ok(SPVM::TestCase::Sys::IO->feof($test_dir));
 ok(SPVM::TestCase::Sys::IO->ferror($test_dir));
@@ -146,14 +145,6 @@ unless ($^O eq 'MSWin32') {
   ok(SPVM::TestCase::Sys::IO->fsync("$test_dir"));
 }
 
-ok(SPVM::TestCase::Sys::IO->setvbuf("$test_dir"));
-
-ok(SPVM::TestCase::Sys::IO->setbuf("$test_dir"));
-
-ok(SPVM::TestCase::Sys::IO->setbuffer("$test_dir"));
-
-ok(SPVM::TestCase::Sys::IO->setlinebuf("$test_dir"));
-
 ok(SPVM::TestCase::Sys::IO->freopen("$test_dir"));
 
 {
@@ -212,6 +203,18 @@ ok(SPVM::TestCase::Sys::IO->utime("$test_dir"));
 {
   ok(SPVM::TestCase::Sys::IO->spvm_stderr);
 }
+
+{
+  ok(SPVM::TestCase::Sys::IO->fdopen($test_dir));
+}
+
+ok(SPVM::TestCase::Sys::IO->setvbuf("$test_dir"));
+
+ok(SPVM::TestCase::Sys::IO->setbuf("$test_dir"));
+
+ok(SPVM::TestCase::Sys::IO->setbuffer("$test_dir"));
+
+ok(SPVM::TestCase::Sys::IO->setlinebuf("$test_dir"));
 
 SPVM::api->set_exception(undef);
 

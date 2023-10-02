@@ -420,6 +420,8 @@ class TestCase::Sys::IO {
   
   static method fdopen : int ($test_dir : string) {
     
+    warn;
+    
     {
       my $file = "$test_dir/ftest/file_empty.txt";
       my $fd = Sys::IO->open($file, IO->O_RDWR, 0666);
@@ -435,6 +437,8 @@ class TestCase::Sys::IO {
       }
     }
     
+    warn;
+    
     {
       eval { Sys::IO->fdopen(-1, "rb"); };
       
@@ -446,6 +450,8 @@ class TestCase::Sys::IO {
         return 0;
       }
     }
+    
+    warn;
     
     {
       my $file = "$test_dir/ftest/file_empty.txt";
@@ -2275,6 +2281,8 @@ class TestCase::Sys::IO {
 
   static method setvbuf : int ($test_dir : string) {
     
+    warn;
+    
     {
       my $file = "$test_dir/ftest/file_bytes8.txt";
       my $stream = Sys::IO->fopen($file, "rb");
@@ -2287,7 +2295,9 @@ class TestCase::Sys::IO {
         return 0;
       }
     }
-
+    
+    warn;
+    
     {
       my $file = "$test_dir/ftest/file_bytes8.txt";
       my $stream = Sys::IO->fopen($file, "rb");
@@ -2300,6 +2310,8 @@ class TestCase::Sys::IO {
       }
     }
     
+    warn;
+    
     # Constant values
     {
       Sys::IO::Constant->_IONBF;
@@ -2307,10 +2319,14 @@ class TestCase::Sys::IO {
       Sys::IO::Constant->_IOFBF;
     }
     
+    warn;
+    
     return 1;
   }
 
   static method setbuf : int ($test_dir : string) {
+    
+    warn;
     
     {
       my $file = "$test_dir/ftest/file_bytes8.txt";
@@ -2322,10 +2338,14 @@ class TestCase::Sys::IO {
       Sys::IO->setbuf($stream, $buf);
     }
     
+    warn;
+    
     return 1;
   }
 
   static method setbuffer : int ($test_dir : string) {
+    
+    warn;
     
     {
       my $file = "$test_dir/ftest/file_bytes8.txt";
@@ -2337,10 +2357,14 @@ class TestCase::Sys::IO {
       Sys::IO->setbuffer($stream, $buf, IO->BUFSIZ);
     }
     
+    warn;
+    
     return 1;
   }
 
   static method setlinebuf : int ($test_dir : string) {
+    
+    warn;
     
     {
       my $file = "$test_dir/ftest/file_bytes8.txt";
@@ -2351,6 +2375,8 @@ class TestCase::Sys::IO {
       
       Sys::IO->setlinebuf($stream);
     }
+    
+    warn;
     
     return 1;
   }
